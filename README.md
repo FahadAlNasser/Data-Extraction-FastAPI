@@ -1,4 +1,9 @@
-This is a program was created as a practice project to apply what i learned from my Python course and self-study at Marymount University. It extracts data from PDF files and summaries it based on keywords
+This is a program was created as a practice project to apply what i learned from my Python course and self-study at Marymount University. It extracts data from PDF files and summaries it based on keywords. The way it works that I do not have to run the program on Visual Studio Code. The steps to operate this code:
+
+1- Run the Command Prompt on your device
+2- Change the directory to python file by inputting the cd command
+3- Run the following command uvicorn main:app --reload  (The file is called main on my device)
+4- After launching the command, the program will be hosted on this link: http://127.0.0.1:8000/doc
 
 ### Example Output:
 GET
