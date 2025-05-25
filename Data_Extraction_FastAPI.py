@@ -30,6 +30,35 @@ Sustainability = {
 }
 
 
+@app.post("/filling")
+def filling_reports():
+   database = Sessions()
+   try:
+      for comp, link in Sustainability.items():
+        response = requests.get(link)
+        if response.status_code != 200:
+           continue
+        with open(f"{comp}.pdf", "wb") as file:
+           file.write(response.content)
+        f = fitz.open(f"{comp}.pdf")
+        complete_text = ""
+        for pg in f:
+           complete_text += pg.get_text()
+        f.close()
+        authen = database.query(Insight).filter(Insight.comp == comp).first()
+        if authen:
+           authen.word = complete_text
+        else:
+           recent_input = Insight(comp=comp, link=link, word=complete_text)
+           database.add(recent_input)
+      database.commit()
+      return {"message":"Download completed"}
+   except Exception as e:
+      raise HTTPException(status_code=500, detail=str(e))
+   finally:
+      database.close()
+
+
 @app.get("/insight")
 def get_insight():
     database = Sessions()
