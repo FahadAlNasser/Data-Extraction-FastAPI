@@ -9,6 +9,13 @@ This is a program was created as a practice project to apply what i learned from
 
 4- After launching the command, the program will be hosted on this link: http://127.0.0.1:8000/doc
 
+5- Execute "filling" first; it will download the reports to your device
+
+6- Execute "insight" and you should see the result
+
+7- Now you can execute "finding paragraph" by inputting a keyword such as water waste, etc
+
+
 ### Example Output:
 GET
 /insight
